@@ -1,24 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import { createElement } from 'react';
 
-export const App = () => { // декларативный
-	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className="App-link" // императивный
-					href="https://reactjs.org" // императивный
-					target="_blank" // императивный
-					rel="noopener noreferrer" // императивный
-				>
-					Learn React
-				</a>
-        {new Date().toLocaleString()}
-			</header>
-		</div> // декларативный
+export function App() {
+	// декларативный
+	return createElement(
+		'div',
+		{ className: 'App' },
+		createElement(
+      'header',
+      { className: 'App-header' },
+      createElement('img', { src: logo, className: 'App-logo', alt: 'logo' }),
+      createElement('p'),
+      createElement('a', {className: 'App-link', href: 'https://reactjs.org', target: "_blank", rel: 'noopener noreferrer'}, 'Learn React'),
+      new Date().toLocaleString()
+    ),
 	);
-};
+}
